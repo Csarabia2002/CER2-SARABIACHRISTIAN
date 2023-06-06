@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from comunicados.views import home
+from comunicados.views import home, filtrar_comunicados
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name = "home")
+    path('', home, name = "home"),
+    path('filtrar_comunicados/',filtrar_comunicados, name= "filtrar_comunicados")
+
 ]

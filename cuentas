@@ -1,0 +1,16 @@
+USUARIOS:
+1.-profesor
+Contraseña:
+gU!-P!3qHvipZb7
+
+2.-admin
+Contraseña:
+1234
+
+3.-trabajador
+Contraseña:
+rPtS83m_5NA9FuQ
+
+python manage.py dumpdata > dump.json
+
+python manage.py loaddata dump.json
