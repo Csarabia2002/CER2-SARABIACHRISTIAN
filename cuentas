@@ -10,7 +10,3 @@ Contraseña:
 3.-trabajador
 Contraseña:
 rPtS83m_5NA9FuQ
-
-python manage.py dumpdata > dump.json
-
-python manage.py loaddata dump.json
