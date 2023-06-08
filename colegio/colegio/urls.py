@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+#lo que hice fue importar todas las views de la app comunicados y se importan dos views
 from comunicados.views import home, filtrar_comunicados
 
-
+#se configuran las urls de home y de filtrar comunicados
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name = "home"),

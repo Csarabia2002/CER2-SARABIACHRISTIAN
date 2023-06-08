@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+#importe os para poder manejar las carpetas de mi entorno del proyecto 
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,7 +31,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# agrege la apps de comunicados a la aplicaciones de django
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -52,7 +53,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'colegio.urls'
-
+#se configura la ruta de la carpeta templates, hubo un error con otra forma de agregar el directorio y al final fue utilizada esta
+#para windows
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -116,7 +118,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
+#Se configura la ruta para la carpeta static pero como utilize boostrap cdn no cargan los estaticos directamente en la carpeta
+#solo cargo los statics de admin
 STATIC_URL = 'static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'comunicados/static')

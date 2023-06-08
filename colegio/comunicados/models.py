@@ -1,6 +1,8 @@
 from django.db import models
+#importo el moderlo user para poder usarlo como variable en el modelo comunicado
 from django.contrib.auth.models import User
 
+#modelo.categoria segun en el pdf
 class Categoria(models.Model):
     nombre = models.TextField()
     descripcion = models.TextField()
@@ -10,8 +12,11 @@ class Categoria(models.Model):
         return self.nombre
 
 
+#modelo.comunicado segun en el pdf
+
 
 class Comunicado(models.Model):
+    #creo los niveles para poder usarlos como variables
     NIVEL_CHOICES =[  
         ("GEN","General"),
         ("PRE","Ciclo Preescolar"),
