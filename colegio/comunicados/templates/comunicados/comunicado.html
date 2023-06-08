@@ -12,44 +12,66 @@
 </head>
 <body>
     {% include 'comunicados/menu.html'%}
-    
     <form action="{% url 'filtrar_comunicados' %}" method="GET" class="form-inline">
-        <div class="form-group">
-            <label for="nivel">Nivel:</label>
-            <select name="nivel" id="nivel" class="form-control">
-                <option value="">Todos</option>
+        <div class="d-flex">
+            <label for="nivel"><h5>Nivel: </h5></label>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="nivel">
+
                 {% for nivel in niveles %}
                     <option value="{{ nivel.0 }}">{{ nivel.1 }}</option>
                 {% endfor %}
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="categoria">Categoría:</label>
-            <select name="categoria" id="categoria" class="form-control">
+              </select>
+      
+            <label for="categoria"><h5>Categoría: </h5></label>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="categoría">
                 <option value="">Todas</option>
                 {% for categoria in categorias %}
                     <option value="{{ categoria.nombre }}">{{ categoria.nombre }}</option>
                 {% endfor %}
             </select>
-        </div>
         <button type="submit" class="btn btn-primary">Filtrar</button>
+        </div>
     </form>
     
-    {% for comunicado in comunicados %}
-        <div class="card mt-3">
-            <div class="card-body">
-                <h5 class="card-title">{{ comunicado.titulo }}</h5>
-                <p class="card-text">{{ comunicado.detalle }}</p>
-                <p class="card-text">Nivel: {{ comunicado.get_nivel_display }}</p>
-                <p class="card-text">Categoría: {{ comunicado.categoria.nombre }}</p>
-                <p class="card-text">Fecha de envío: {{ comunicado.fecha_envio }}</p>
-                <p class="card-text">Fecha de última modificación: {{ comunicado.fecha_ultima_modificacion }}</p>
-                <p class="card-text">Publicado por: {{ comunicado.publicado_por }}</p>
+    <section style="background-color: #86a7c7;">
+        {% for comunicado in comunicados %}
+        <div class="container my-5 py-5 mb-0 mt-0" >
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-12 col-lg-10">
+              <div class="card text-dark">
+                <div class="card-body p-4">
+                  <h4 class="mb-0">{{ comunicado.titulo }}</h4>
+                  <p class="fw-light mb-4 pb-2">{{ comunicado.get_nivel_display }}</p>
+
+                  <div class="d-flex flex-start">
+                    <img class="rounded-circle shadow-1-strong me-3"
+                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp" alt="avatar" width="60"
+                      height="60" />
+                    <div>
+                      <h6 class="fw-bold mb-1">{{ comunicado.publicado_por }}</h6>
+                      <div class="d-flex align-items-center mb-3">
+                        <p class="mb-0">
+                        {{comunicado.fecha_ultima_modificacion}}
+                          <span class="badge bg-primary"></span>
+                        </p>
+                        <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
+                        <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>
+                        <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
+                      </div>
+                      <p class="mb-0">
+                        {{comunicado.detalle}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    {% empty %}
+        {% empty %}
         <p>No se encontraron comunicados.</p>
-    {% endfor %}
+        {% endfor %}
+      </section>
 </body>
 </html>
 
